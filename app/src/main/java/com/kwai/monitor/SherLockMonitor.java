@@ -51,7 +51,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        XposedBridge.log("调用getDeviceId(int)获取了imei");
+                        XposedBridge.log("\n调用getDeviceId(int)获取了imei");
                     }
 
                     @Override
@@ -71,7 +71,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        XposedBridge.log("调用getSubscriberId获取了imsi");
+                        XposedBridge.log("\n调用getSubscriberId获取了imsi");
                     }
 
                     @Override
@@ -89,7 +89,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        XposedBridge.log("调用getMacAddress()获取了mac地址");
+                        XposedBridge.log("\n调用getMacAddress()获取了mac地址");
                     }
 
                     @Override
@@ -107,7 +107,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        XposedBridge.log("调用getHardwareAddress()获取了mac地址");
+                        XposedBridge.log("\n调用getHardwareAddress()获取了mac地址");
                     }
 
                     @Override
@@ -139,7 +139,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                                 && param.args[0] instanceof ContentResolver
                                 && param.args[1] instanceof String
                                 && ((String)param.args[1]).equals("android_id")){
-                            XposedBridge.log("调用getString，参数为android_id，获取了android_id");
+                            XposedBridge.log("\n调用getString，参数为android_id，获取了android_id");
                         }
                     }
 
@@ -172,7 +172,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
 //
 //                        }
 
-                        XposedBridge.log("调用getSimSerialNumber，获取了sim卡序列号");
+                        XposedBridge.log("\n调用getSimSerialNumber，获取了sim卡序列号");
                     }
 
                     @Override
@@ -192,7 +192,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
 
-                        XposedBridge.log("调用getSimOperatorName，获取网络运营商，iccid");
+                        XposedBridge.log("\n调用getSimOperatorName，获取网络运营商，iccid");
                     }
 
                     @Override
@@ -212,7 +212,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
 
-                        XposedBridge.log("调用getSimOperator");
+                        XposedBridge.log("\n调用getSimOperator");
                     }
 
                     @Override
@@ -239,7 +239,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
 //
 //                        }
 
-                        XposedBridge.log("调用getRunningTasks，获取了tasks");
+                        XposedBridge.log("\n调用getRunningTasks，获取了tasks");
                     }
 
                     @Override
@@ -264,7 +264,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
 //
 //                        }
 
-                        XposedBridge.log("调用getAppTasks，获取了tasks");
+                        XposedBridge.log("\n调用getAppTasks，获取了tasks");
                     }
 
                     @Override
@@ -289,7 +289,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
 //
 //                        }
 
-                        XposedBridge.log("调用getRunningAppProcesses，获取了tasks");
+                        XposedBridge.log("\n调用getRunningAppProcesses，获取了tasks");
                     }
 
                     @Override
@@ -310,7 +310,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        XposedBridge.log("调用getLastKnownLocation获取了GPS地址");
+                        XposedBridge.log("\n调用getLastKnownLocation获取了GPS地址");
                     }
 
                     @Override
@@ -332,7 +332,7 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         String pkgName = (String) param.args[0];
                         if  (!pkgName.equals(lpparam.processName)) {
-                            XposedBridge.log("调用getPackageInfo获取应用信息 " + param.args[0]);
+                            XposedBridge.log("\n调用getPackageInfo获取应用信息 " + param.args[0]);
                             XposedBridge.log(getMethodStack());
                         }
                     }
