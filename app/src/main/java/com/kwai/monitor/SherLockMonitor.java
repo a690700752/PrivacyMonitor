@@ -36,7 +36,6 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  *
  */
 public class SherLockMonitor implements IXposedHookLoadPackage {
-
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
 
         if (lpparam == null) {
@@ -321,7 +320,24 @@ public class SherLockMonitor implements IXposedHookLoadPackage {
                     }
                 }
         );
-        Log.w("kkkkk","name:" + LocationManager.class.getName());
+        XposedBridge.log("name:" + LocationManager.class.getName());
+
+        XposedHelpers.findAndHookMethod(
+                "android.app.ApplicationPackageManager",
+                lpparam.classLoader,
+                "getPackageInfo",
+                String.class, int.class,
+                new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                        String pkgName = (String) param.args[0];
+                        if  (!pkgName.equals(lpparam.processName)) {
+                            XposedBridge.log("调用getPackageInfo获取应用信息 " + param.args[0]);
+                            XposedBridge.log(getMethodStack());
+                        }
+                    }
+                }
+        );
 
 //        //hook定位方法
 //        XposedHelpers.findAndHookMethod(
